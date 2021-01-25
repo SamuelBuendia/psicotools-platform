@@ -1,6 +1,11 @@
 <div class="row">
 
-    {{#if users}}
+    <div class="ml-auto">
+        <form method="get" action="/users/add">
+            <button type="submit" class="btn btn-success btn-sm">Crear Nuevo</button>   
+        </form>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,22 +23,19 @@
                 <td>{{identification_number}}</td>
                 <td>{{name}}</td>
                 <td>{{lastname}}</td>
-                <td>
-                    <a href="/users/edit/{{_id}}"><i class="fas fa-edit"></i></a>
-                    <a href=""><i class="text-warning fas fa-users-slash"></i></a>
+                <td class="d-flex">
+                    <a href="/users/edit/{{_id}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="" class="btn btn-warning btn-sm mx-2"><i class="fas fa-users-slash"></i></a>
                     <form action="/users/delete/{{_id}}?_method=DELETE" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                     </form>
-                </td>
+                </td> 
+                {{else}}
+                <td class="text-center" colspan="5">No Hay registros</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-    {{else}}
-    <div class="text-center">
-        <h1>No hay registros</h1>
-        <a href="/users/add" class="btn btn-success btn-sm">Crear Usuario</a>
-    </div>
-    {{/if}}
+
 </div>
