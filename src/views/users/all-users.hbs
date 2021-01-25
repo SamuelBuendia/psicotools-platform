@@ -1,0 +1,39 @@
+<div class="row">
+
+    {{#if users}}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Doc</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{identification_number}}</td>
+                <td>{{name}}</td>
+                <td>{{lastname}}</td>
+                <td>
+                    <a href="/users/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                    <a href=""><i class="text-warning fas fa-users-slash"></i></a>
+                    <form action="/users/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="text-center">
+        <h1>No hay registros</h1>
+        <a href="/users/add" class="btn btn-success btn-sm">Crear Usuario</a>
+    </div>
+    {{/if}}
+</div>
