@@ -17,23 +17,61 @@ router.get("/users/add", (req, res) => {
 });
 
 router.post("/users/new-user", async (req, res) => {
-  const { name, lastname, identification_number } = req.body;
+  const {
+    id,
+    name,
+    lastName,
+    identification_number,
+    gender,
+    birthdate,
+    phone_1,
+    phone_2,
+    address,
+    city,
+    department,
+    email,
+    user_type,
+  } = req.body;
   const errors = [];
   if (!name) {
     errors.push({ text: "Escribe un nombre" });
   }
-  if (!lastname) {
+  if (!lastName) {
     errors.push({ text: "Escribe un apellido" });
   }
   if (errors.length > 0) {
     res.render("users/new-user", {
       errors,
+      id,
       name,
-      lastname,
+      lastName,
       identification_number,
+      gender,
+      birthdate,
+      phone_1,
+      phone_2,
+      address,
+      city,
+      department,
+      email,
+      user_type,
     });
   } else {
-    const newUser = new User({ name, lastname, identification_number });
+    const newUser = new User({
+      id,
+      name,
+      lastName,
+      identification_number,
+      gender,
+      birthdate,
+      phone_1,
+      phone_2,
+      address,
+      city,
+      department,
+      email,
+      user_type,
+    });
     console.log(newUser);
     await newUser.save();
     req.flash("success_msg", "Usuario Guardado con Exito");
@@ -54,10 +92,10 @@ router.get("/users/edit/:id", async (req, res) => {
 });
 
 router.put("/users/edit-user/:id", async (req, res) => {
-  const { name, lastname, identification_number } = req.body;
+  const { name, lastName, identification_number } = req.body;
   await User.findByIdAndUpdate(req.params.id, {
     name,
-    lastname,
+    lastName,
     identification_number,
   });
   req.flash("success_msg", "Usuario Actualizado con Exito");

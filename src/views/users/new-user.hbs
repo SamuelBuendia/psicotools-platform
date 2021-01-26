@@ -1,34 +1,77 @@
-{{#each errors}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{text}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+<div class="row">
+    <div class="col-12">
+        <h1>Crear Usuario</h1>
     </div>
-{{/each}}
+</div>  
+<form action="/users/new-user" method="POST">
+    <div class="row">
+        <div class="form-group col-md-1">
+            <label for="id">id</label>
+            <input type="number" name="id" class="form-control" placeholder="id" value="{{id}}">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="name">name</label>
+            <input type="text" name="name" class="form-control" placeholder="name" value="{{name}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastName">lastName</label>
+            <input type="text" name="lastName" class="form-control" placeholder="lastName" value="{{lastName}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="identification_number">identification_number</label>
+            <input type="number" name="identification_number" class="form-control" placeholder="identification_number" value="{{identification_number}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="gender">Genero</label>
+            <select class="form-control" id="gender" name="gender">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="birthdate">birthdate</label>
+            <input type="text" name="birthdate" class="form-control" placeholder="birthdate" value="{{birthdate}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="phone_1">phone_1</label>
+            <input type="number" name="phone_1" class="form-control" placeholder="phone_1" value="{{phone_1}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="phone_2">phone_2</label>
+            <input type="number" name="phone_2" class="form-control" placeholder="phone_2" value="{{phone_2}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="address">address</label>
+            <input type="text" name="address" class="form-control" placeholder="address" value="{{address}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="city">city</label>
+            <input type="text" name="city" class="form-control" placeholder="city" value="{{city}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="department">department</label>
+            <input type="text" name="department" class="form-control" placeholder="department" value="{{department}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" value="{{email}}">
+            {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+        </div>
+        <div class="form-group col-md-5">
+            <label for="user_type">Tipo de Usuario</label>
+            <select class="form-control" id="user_type" value="{{user_type}}">
+            <option value="therapist">Terapista</option>
+            <option value="admin">Consultante</option>
+            </select>
+        </div>
 
-<div class="col-md-4 mx-auto">
-    <div class="card">
-        <div class="card-header">
-            <h1>New User</h1>
-        </div>
-        <div class="card-body">
-            <form action="/users/new-user" method="POST">
-                <div class="form-group mb-3">
-                    <input type="number" name="identification_number" class="form-control" placeholder="identification_number" autofocus>
-                </div>
-                <div class="form-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Nombre" autofocus>
-                </div>
-                <div class="form-group mb-3">
-                    <input type="text" name="lastname" class="form-control" placeholder="lastname" autofocus>
-                </div>
-                <div class="form-group mb-3 d-grid">
-                    <button class="btn btn-primary" type="submit">
-                        Save
-                    </button>
-                </div>
-            </form>
+        <div class="form-group col-md-1 d-flex flex-column justify-content-end">
+            <button class="btn btn-primary" type="submit">
+                Save
+            </button>
         </div>
     </div>
-</div>
+</form>
+         
+        
+            
